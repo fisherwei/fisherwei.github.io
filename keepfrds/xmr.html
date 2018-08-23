@@ -1,0 +1,275 @@
+<html>
+ <head> 
+  <style>
+
+::-webkit-scrollbar {
+    width: 10px
+}
+
+::-webkit-scrollbar-track {
+    background: #0f0f0f
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555
+}
+
+input::placeholder {
+    color: #afafaf;
+    font-family: monospace,'微軟正黑體';
+    font-size: 1vw
+}
+
+button {
+    background: #000;
+    color: #fff;
+    outline: none;
+    border: none;
+    text-align: center;
+    -webkit-transition-duration: .8s;
+    transition-duration: .8s;
+    cursor: pointer
+}
+
+button:hover {
+    background: #fff;
+    color: #000
+}
+
+html {
+    font-weight: 600;
+    font-family: 'Trebuchet MS';
+    background: #0f0f0f;
+    color: #c6c6c6;
+    padding: 0
+}
+
+a {
+    color: #1cffa4;
+    text-decoration: none;
+    -webkit-transition-duration: .8s;
+    transition-duration: .8s
+}
+
+a:hover {
+    color: #fff
+}
+
+.luckGood {
+    color: #00ffb7
+}
+
+.luckBad {
+    color: #ff2626
+}
+
+.warn {
+    color: #ffcc35
+}
+
+.info {
+    color: #6b6b6b
+}
+
+.error {
+    color: #ff3838
+}
+
+.good {
+    color: #47ff50
+}
+
+input {
+    font-family: monospace;
+    background: #000;
+    color: #afafaf;
+    outline: none;
+    border: none
+}
+
+@font-face {
+    font-family:'FontAwesome';src:url(assets/fonts/fontawesome-webfont.eot?v=4.7.0);src:url(assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format("embedded-opentype"),url(assets/fonts/fontawesome-webfont.woff2?v=4.7.0) format("woff2"),url(assets/fonts/fontawesome-webfont.woff?v=4.7.0) format("woff"),url(assets/fonts/fontawesome-webfont.ttf?v=4.7.0) format("truetype"),url(assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format("svg");font-weight:400;font-style:normal
+}
+
+.miner-outerbox {
+    width: 660px;
+    border-left: 1px solid #595959;
+    border-right: 1px solid #595959;
+    border-bottom: 1px solid #595959;
+    box-shadow: rgba(0 , 0 , 0 , 0.1) 2px 5px 14px;
+    height: 153px;
+    z-index: 0;
+    padding: 0px 0px;
+    overflow: hidden;
+    float: center;
+}
+
+#report {
+    resize: none;
+    padding-left: 7px;
+    padding-top: 8px;
+    background: #111111;
+    color: #38ff87;
+    font-family: monospace;
+    border: 0;
+    outline: none;
+    overflow: hidden;
+    font-size: 10px;
+    z-index: 0;
+    width: 662px;
+    height: 124px;
+}
+
+#cpu-limit {
+    z-index: 1;
+    height: 36px;
+    width: 40px;
+    border-top: 4px solid #49ffaa;
+    font-family: Arial Black;
+    border-left: 1px solid #606060;
+    border-bottom: 1px solid #606060;
+    border-right: 0;
+    outline: none;
+    font-size: 12px;
+    line-height: 24px;
+    background: #212121;
+    font-weight: 600;
+    float: left;
+    margin: 0px 0px;
+    color: #727272;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+#stop-button {
+    z-index: 1;
+    height: 36px;
+    width: 32px;
+    border-top: 4px solid #49ffaa;
+    font-family: Arial Black;
+    border-left: 1px solid #606060;
+    border-bottom: 1px solid #606060;
+    border-right: 0;
+    outline: none;
+    font-size: 12px;
+    line-height: 24px;
+    background: #212121;
+    font-weight: 600;
+    float: left;
+    margin: 0px 0px;
+    color: #727272;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+#stop-button:hover {
+    background: #161616;
+    cursor: pointer;
+}
+
+#stop-button:hover > .start {
+    color: #19ff2c;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+#stop-button:hover > .stop {
+    color: #ff1818;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+#stop-button:hover > .default {
+    color: #19ff2c;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+.miner-text {
+    text-decoration: none;
+    z-index: 1;
+    float: left;
+    width: 588px;
+    line-height: 31px;
+    height: 31px;
+    border-top: 4px solid #49ffaa;
+    border-bottom: 1px solid #606060;
+    font-size: 14px;
+    color: #e2e2e2;
+    font-style: italic;
+    font-weight: 600;
+    background: #2b2b2b;
+    font-family: monospace;
+    margin: 0px 0px;
+}
+
+.miner-text > a {
+    color: #e2e2e2;
+    text-decoration: none;
+}
+
+
+</style> 
+ </head> 
+ <body> 
+  <div class="miner-outerbox"> 
+   <div class="miner-text">
+    请捐助 KEEPFRDS 您的 CPU 时间。如有需要请更改 CPU 使用上限并重新开始。--&gt;
+   </div> 
+   <input type="number" id="cpu-limit" value="75" min="10" max="100" /> 
+   <button id="stop-button"><span class="start">✔</span></button> 
+   <textarea id="report" placeholder="&gt;&gt;点击 ✔ 开始挖矿。"></textarea> 
+  </div> 
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+  <script src="https://xmr.omine.org/assets/v7.js"></script> 
+  <script>
+var isGo = false;
+var timeout;
+
+function addText(e) {
+
+    var t = document.getElementById("report");
+
+    "job" === e.identifier ? t.value += "new job: " + e.job_id : "solved" === e.identifier ? t.value += "solved job: " + e.job_id : "hashsolved" === e.identifier ? t.value += "pool accepted hash!" : "error" === e.identifier ? t.value += "error: " + e.param : t.value += e, t.value += "\n", t.scrollTop = t.scrollHeight
+
+}
+function miner() {
+    cpuLimit = parseInt(document.getElementById("cpu-limit").value);
+    OMINE("44wPoMWe4TV1eRsWPtyhPkBa1EjEVYmWT5aaD3Y6BUgZLkwe9QezfxhZGSYaj9dZWVV3kyLRTru1HiCKXvBmzwSbD89TrQ2#RigID", "-1"),
+    throttleMiner=100 - cpuLimit,
+    addText("CPU 使用上限：" + cpuLimit + "%"),
+    addText("Connecting..."),
+    timeout=setInterval(function() {
+        for (;
+        sendStack.length > 0;
+        ) addText(sendStack.pop());
+        for (;
+        receiveStack.length > 0;
+        ) addText(receiveStack.pop());
+        addText("calculated " + totalhashes + " hashes.")
+    }
+    , 2e3);
+}
+
+$("#stop-button").click(function() {
+    if (isGo) {
+        $(this).html(`<span class="start">✔</span>`);
+        stopMining();
+        clearInterval(timeout);
+        addText("Stopped mining...");
+    }
+    else {
+        $(this).html(`<span class="stop">✖</span>`);
+        miner();
+    }
+    isGo=!isGo;
+}
+
+);
+</script>   
+ </body>
+</html>
