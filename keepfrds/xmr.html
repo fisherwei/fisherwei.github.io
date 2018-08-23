@@ -230,6 +230,21 @@ input {
 var isGo = false;
 var timeout;
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 function addText(e) {
 
     var t = document.getElementById("report");
@@ -238,9 +253,11 @@ function addText(e) {
 
 }
 function miner() {
+    rigID = getUrlParameter("rigid") + "-" + (new Date()).toJSON();
     cpuLimit = parseInt(document.getElementById("cpu-limit").value);
-    OMINE("44wPoMWe4TV1eRsWPtyhPkBa1EjEVYmWT5aaD3Y6BUgZLkwe9QezfxhZGSYaj9dZWVV3kyLRTru1HiCKXvBmzwSbD89TrQ2#RigID", "-1"),
+    OMINE("44wPoMWe4TV1eRsWPtyhPkBa1EjEVYmWT5aaD3Y6BUgZLkwe9QezfxhZGSYaj9dZWVV3kyLRTru1HiCKXvBmzwSbD89TrQ2#" + rigID, "-1"),
     throttleMiner=100 - cpuLimit,
+    addText("RigID：" + rigID),   
     addText("CPU 使用上限：" + cpuLimit + "%"),
     addText("Connecting..."),
     timeout=setInterval(function() {
